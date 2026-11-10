@@ -9,7 +9,7 @@ def obtener_conexion():
             port=st.secrets["mysql"]["port"],
             user=st.secrets["mysql"]["user"],
             password=st.secrets["mysql"]["password"],
-            database=st.secrets["mysql"]["database"]
+            database=st.secrets["mysql"]["database"],
         )
         return conexion
     except mysql.connector.Error as error:
