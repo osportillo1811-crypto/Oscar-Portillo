@@ -6,6 +6,7 @@ def verificar_usuario(usuario, contrasena):
     conexion = obtener_conexion()
     if conexion is None:
         return None
+
     cursor = None
     try:
         cursor = conexion.cursor()
@@ -16,7 +17,8 @@ def verificar_usuario(usuario, contrasena):
             LIMIT 1
         """
         cursor.execute(consulta, (usuario, contrasena))
-        return cursor.fetchone()
+        resultado = cursor.fetchone()
+        return resultado
     except Exception as error:
         st.error(f"Error al verificar el usuario: {error}")
         return None
@@ -29,6 +31,7 @@ def verificar_usuario(usuario, contrasena):
 
 def login():
     st.title("Inicio de sesión")
+
     usuario = st.text_input("Usuario")
     contrasena = st.text_input("Contraseña", type="password")
 
